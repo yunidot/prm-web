@@ -17,6 +17,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
         version: 4.0.0(svelte@5.1.13)(vite@5.4.10)
+      '@vincjo/datatables':
+        specifier: ^2.0.5
+        version: 2.0.5(svelte@5.1.13)
       svelte:
         specifier: ^5.0.0
         version: 5.1.13
@@ -319,6 +322,11 @@ packages:
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
+
+  '@vincjo/datatables@2.0.5':
+    resolution: {integrity: sha512-ZD5Y5Tp1jlVSJhKEZqwhaUTUpTi+voz2Hx+Yr2HQ1JoCisYKk4T+MbJNmB6fN/Mra/hjrlEm5j/Ap5Ud0qydLw==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   acorn-typescript@1.4.13:
     resolution: {integrity: sha512-xsc9Xv0xlVfwp2o7sQ+GCQ1PgbkdcpWdTzrwXxO3xDMTAywVS3oXVOcOHuRjAPkS4P9b+yc/qNF15460v+jp4Q==}
@@ -718,6 +726,10 @@ snapshots:
   '@types/cookie@0.6.0': {}
 
   '@types/estree@1.0.6': {}
+
+  '@vincjo/datatables@2.0.5(svelte@5.1.13)':
+    dependencies:
+      svelte: 5.1.13
 
   acorn-typescript@1.4.13(acorn@8.14.0):
     dependencies:

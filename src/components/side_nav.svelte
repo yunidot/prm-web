@@ -10,16 +10,14 @@
 
                 <!-- Sidenav Menu Heading (Core)-->
                 <div class="sidenav-menu-heading">Core</div>
-                <!-- Sidenav Accordion (Dashboard)-->
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                <a class="nav-link" href="/">
                     <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                    Dashboards
-                    <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    Dashboard
                 </a>
                 <!-- Sidenav Heading (Custom)-->
                 <div class="sidenav-menu-heading">Patient</div>
                     <!-- Sidenav Accordion (Pages)-->
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/patients">
                     <div class="nav-link-icon"><i class="fa-solid fa-hospital-user"></i></div>
                     환자 목록
                 </a>
