@@ -1,24 +1,18 @@
 <script>
     import { TableHandler, Datatable, ThSort, ThFilter } from '@vincjo/datatables'
-    const data = [
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"},
-        {name: "사용자", email: "xxxxx@xxxxxx.com", phone: "xxx-xxxx-xxxx", visited: "xxxx-xx-xx", reservation: "xxxx-xx-xx"}
-    ];
 
-    const table = new TableHandler(data, { rowsPerPage: 10});
+    export let data;
+
+    const table_data = data.patients;
+    const table = new TableHandler(
+        table_data,
+        {
+            rowsPerPage: 10,
+            sort: { field: 'patient_no', direction: 'desc'} | undefined
+        }
+    );
+
+
 </script>
 
 <svelte:head>
@@ -37,7 +31,7 @@
                     </h1>
                 </div>
                 <div class="col-12 col-xl-auto mb-3">
-                    <a href="/patients/view/3" class="btn btn-sm btn-light text-primary me-2">Add</a>
+                    <a href="/patients/create" class="btn btn-sm btn-light text-primary me-2">Add</a>
                 </div>
             </div>
         </div>
@@ -49,18 +43,19 @@
     </div>
     <div class="card-body table-responsive">
         <Datatable  basic {table}>
+            <div class="spinner" class:active={table.isLoading}></div>
             <table>
                 <thead>
                     <tr>
-                        <ThSort {table} locale="ko-KR" field="name">환자명</ThSort>
-                        <ThSort {table} field="phone">전화번호</ThSort>
+                        <ThSort {table} locale="ko-KR" field="patient_nm">환자명</ThSort>
+                        <ThSort {table} field="phone_no">전화번호</ThSort>
                         <ThSort {table} field="email">이메일</ThSort>
                         <ThSort {table} field="visited">최근방문일</ThSort>
                         <ThSort {table} field="reservation">예약일</ThSort>
                     </tr>
                     <tr>
-                        <ThFilter {table} field="name" />
-                        <ThFilter {table} field="phone" />
+                        <ThFilter {table} field="patient_nm" />
+                        <ThFilter {table} field="phone_no" />
                         <ThFilter {table} field="email" />
                         <ThFilter {table} field="visited" />
                         <ThFilter {table} field="reservation" />
@@ -69,11 +64,11 @@
                 <tbody>
                 {#each table.rows as row}
                     <tr>
-                        <td><a href="/patients/view/3">{row.name}</a></td>
-                        <td>{row.phone}</td>
+                        <td><a href="/patients/view/{row.patient_no}">{row.patient_nm}</a></td>
+                        <td>{row.phone_no}</td>
                         <td>{row.email}</td>
-                        <td>{row.visited}</td>
-                        <td>{row.reservation}</td>
+                        <td>2024-01-01</td>
+                        <td>2024-12-31</td>
                     </tr>
                 {/each}
                 </tbody>
